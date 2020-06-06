@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -14,8 +15,13 @@ bucket = [
 	{'min':0.0,'color':'#ff0000','xs':[],'ys':[]},
 ]
 
+if len(sys.argv) < 2:
+	print('Usage: %s MAplot.tsv' % sys.argv[0])
+	sys.exit(1)
+filename = sys.argv[1]
+
 fig, ax = plt.subplots()
-with open('MA_plot_consensuspeaks.tsv') as f:
+with open(filename) as f:
 	lines = f.readlines()
 	for line in lines:
 		data = line.rstrip().split("\t")
