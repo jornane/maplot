@@ -19,7 +19,7 @@ with open('MA_plot_consensuspeaks.tsv') as f:
 	lines = f.readlines()
 	for line in lines:
 		data = line.rstrip().split("\t")
-		if data[0] != 'chr1': continue
+		if data[0] == 'Chr': continue # Ignore the header
 		y = float(data[4]) # Fold
 		c = float(data[5]) # FDR
 		x = float(data[6]) # log10_Mean_normalized_countd
